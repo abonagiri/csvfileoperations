@@ -9,10 +9,7 @@ App.controller('docController',
                 .then(
                     function (response) {
                         alert("file uploaded successfully.");
-                        $http.get("http://localhost:8080/api/csv/get").then(
-                            function(response) {
-                                $rootScope.userList = response;
-                            });
+                        $rootScope.userList = response;
                     },
                     function (errResponse) {
 

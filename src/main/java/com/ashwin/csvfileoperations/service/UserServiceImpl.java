@@ -65,4 +65,9 @@ public class UserServiceImpl implements UserService {
             throw new ValidationException("User not Found");
         }
     }
+
+    @Override
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
 }

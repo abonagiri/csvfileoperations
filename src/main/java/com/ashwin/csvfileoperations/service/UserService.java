@@ -13,4 +13,6 @@ public interface UserService {
     public List<User> process(MultipartFile multipartFile);
 
     public User getUserById(Long id);
+
+    public List<User> getUsers();
 }

@@ -27,9 +27,13 @@ public class UserController {
     }
 
     @GetMapping(value = "/get/{id}")
-    public @ResponseBody User getFile(@PathVariable("id") Long userID) {
+    public @ResponseBody User getUser(@PathVariable("id") Long userID) {
         return csvService.getUserById(userID);
     }
 
+    @GetMapping(value = "/get")
+    public @ResponseBody List<User> getUsers() {
+        return csvService.getUsers();
+    }
 
 }

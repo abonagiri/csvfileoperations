@@ -1,6 +1,8 @@
 package com.ashwin.csvfileoperations.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class User {
@@ -10,12 +12,16 @@ public class User {
     private Long id;
 
     @Column
+    @NotNull(message = "{FirstName is mandatory}")
     private String firstname;
 
     @Column
+    @NotNull(message = "{LastName is mandatory}")
     private String lastname;
 
     @Column
+    @Pattern(regexp = "\"^[\\\\w!#$%&'*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$",
+            message = "{Email should be in Valid Format}")
     private String email;
 
     public String getFirstname() {
@@ -40,5 +46,9 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

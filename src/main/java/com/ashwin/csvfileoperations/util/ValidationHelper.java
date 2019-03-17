@@ -15,8 +15,4 @@ public class ValidationHelper {
             }
         }
     }
-
-    public void validateRow(String[] rowData){
-
-    }
 }

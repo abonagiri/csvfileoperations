@@ -5,16 +5,22 @@ App.controller('docController',
 
         $scope.upload = function(){
             var file = $scope.file;
-            docService.saveDoc(file)
+            
+            if(file.length === 0){
+            	alert("Please select valid file.");
+            }else{
+            	docService.saveDoc(file)
                 .then(
                     function (response) {
                         alert("file uploaded successfully.");
                         $rootScope.userList = response;
                     },
                     function (errResponse) {
-
+                    	alert(errResponse.data.error);
                     }
                 );
+            }
+            
         }
     }
     ]);

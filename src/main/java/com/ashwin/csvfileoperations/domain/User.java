@@ -13,15 +13,15 @@ public class User {
     private Long id;
 
     @Column
-    @NotNull(message = "{FirstName is mandatory}")
+    @NotNull(message = "{user.firstname.notempty}")
     private String firstname;
 
     @Column
-    @NotNull(message = "{LastName is mandatory}")
+    @NotNull(message = "{user.lastname.notempty}")
     private String lastname;
 
     @Column
-    @Email(message = "{Email should be in Valid Format}")
+    @Email(message = "{user.email.notempty}")
     private String email;
 
     public String getFirstname() {

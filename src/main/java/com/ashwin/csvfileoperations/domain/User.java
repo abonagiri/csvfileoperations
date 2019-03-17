@@ -1,6 +1,7 @@
 package com.ashwin.csvfileoperations.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -20,8 +21,7 @@ public class User {
     private String lastname;
 
     @Column
-    @Pattern(regexp = "\"^[\\\\w!#$%&'*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$",
-            message = "{Email should be in Valid Format}")
+    @Email(message = "{Email should be in Valid Format}")
     private String email;
 
     public String getFirstname() {

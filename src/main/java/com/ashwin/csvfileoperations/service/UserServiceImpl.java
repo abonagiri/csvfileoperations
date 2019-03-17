@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,15 +37,18 @@ public class UserServiceImpl implements UserService {
             String completeData = new String(bytes,"UTF-8");
             String[] rows = completeData.split("[\r\n]+");
             //String[] columns = rows[0].split(","); We can print columns
+            List<User> users = new ArrayList<>();
             for(int i=1;i<rows.length;i++){
                 String[] row = rows[i].split(",");
                     User user = new User();
                     user.setFirstname(row[0].trim());
                     user.setLastname(row[1].trim());
                     user.setEmail(row[2].trim());
-                    Validator.validate(user);
-                    userRepository.save(user);
+                    users.add(user);
                 }
+
+            users.stream().forEach(user -> Validator.validate(user));
+            userRepository.saveAll(users);
             }catch(IOException e){
                 log.error("Error in Processing Data:",e);
                 throw new ServiceException("Error Processing Data");

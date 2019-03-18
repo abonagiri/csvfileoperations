@@ -20,16 +20,24 @@ public class UserController {
     @Autowired
     @Qualifier("userImpl")
     UserService csvService;
+    
+    /*
+     * When user clicks on upload button handleFileUpload method is called. 
+     */
 
     @PostMapping(value = "/upload")
     public @ResponseBody List<User> handleFileUpload(@RequestParam(value="file") MultipartFile file) {
         return csvService.process(file);
     }
 
-    @GetMapping(value = "/get/{id}")
+    /*@GetMapping(value = "/get/{id}")
     public @ResponseBody User getUser(@PathVariable("id") Long userID) {
         return csvService.getUserById(userID);
-    }
+    }*/
+    
+    /*
+     * Returns list of users from h2 database while loading the page.
+     */
 
     @GetMapping(value = "/get")
     public @ResponseBody List<User> getUsers() {

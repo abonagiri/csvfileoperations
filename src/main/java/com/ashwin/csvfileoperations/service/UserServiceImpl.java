@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     ValidationHelper validationHelper;
+    
+    /*
+     * (non-Javadoc)
+     * @see com.ashwin.csvfileoperations.service.UserService#process(org.springframework.web.multipart.MultipartFile)
+     * Get the data from .csv file and inserts to h2 database.
+     */
 
     @Override
     public List<User> process(MultipartFile file) {
@@ -56,7 +62,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    @Override
+    
+    /*@Override
     public User getUserById(Long id) {
         Optional<User> user = userRepository.findById(id);
         if(null!=user){
@@ -65,6 +72,13 @@ public class UserServiceImpl implements UserService {
             throw new ValidationException("User not Found");
         }
     }
+    */
+    
+    /*
+     * (non-Javadoc)
+     * @see com.ashwin.csvfileoperations.service.UserService#getUsers()
+     * returns list of all the users from database.
+     */
 
     @Override
     public List<User> getUsers() {
